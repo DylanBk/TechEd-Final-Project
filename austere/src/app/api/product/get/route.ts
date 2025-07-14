@@ -9,7 +9,7 @@ export async function POST(request: Request) {
         const body = await request.json();
 
         const input = {
-            Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME as string,
+            Bucket: process.env.AWS_S3_BUCKET_NAME as string,
             Key: body.key
         };
         const command = new GetObjectCommand(input);
