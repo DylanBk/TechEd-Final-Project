@@ -25,7 +25,7 @@ const SocialProof = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 7000); // Change testimonial every 7 seconds
+    }, 100); // Change testimonial every 5 seconds
     return () => clearInterval(timer);
   }, []);
 
