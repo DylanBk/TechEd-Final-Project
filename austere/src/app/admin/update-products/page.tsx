@@ -1,99 +1,78 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ProductItem } from '../../../../types/types';
 
-const UpdateProductsPage = () => {
-  const [products, setProducts] = useState<ProductItem[]>([]);
-  const [loading, setLoading] = useState(true);
+// Default provenance data for existing items
+const provenanceData: { [key: string]: Partial<ProductItem> } = {
+  'the-monolith-bag.json': { handcraftedHours: 150, edition: 'One of Ten', materials: ['Italian Leather', 'Polished Obsidian'] },
+  'the-aethel-earrings.json': { handcraftedHours: 80, edition: 'Bespoke', materials: ['18k Gold', 'South Sea Pearls'] },
+  'the-chronos-watch.json': { handcraftedHours: 450, edition: 'Numbered Edition', materials: ['Titanium', 'Sapphire Crystal', 'Swiss Movement'] },
+  'the-vesper-blazer.json': { handcraftedHours: 120, edition: 'Made to Measure', materials: ['Cashmere-Silk Blend', 'Horn Buttons'] },
+};
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await fetch('/api/product/get-all');
-        const data = await res.json();
-        if (data.ok) {
-          const productDetailsPromises = data.data.map(async (p: { Key: string }) => {
-            const detailRes = await fetch('/api/product/get', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ key: p.Key }),
-            });
-            const detailData = await detailRes.json();
-            if (detailData.ok) {
-              const parsedData = JSON.parse(detailData.data);
-              return { ...parsedData, id: p.Key };
-            }
-            return null;
-          });
-          const productsData = (await Promise.all(productDetailsPromises)).filter(p => p !== null);
-          setProducts(productsData);
-        }
-      } catch (error) {
-        console.error('Failed to fetch products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+const EnrichProductsPage = () => {
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<string[]>([]);
 
-  const handleUpdate = async (productId: string, description: string) => {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    const updatedProduct = { ...product, description };
+  const handleEnrichment = async () => {
+    setLoading(true);
+    const newResults: string[] = [];
 
     try {
-      const res = await fetch('/api/product/update', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedProduct),
-      });
+      const res = await fetch('/api/product/get-all');
       const data = await res.json();
-      if (data.ok) {
-        alert('Product updated successfully!');
-        setProducts(products.map(p => p.id === productId ? updatedProduct : p));
-      } else {
-        alert(`Error: ${data.error}`);
+      if (!data.ok) throw new Error('Failed to get product list');
+
+      for (const p of data.data) {
+        const key = p.Key;
+        if (!provenanceData[key]) {
+          newResults.push(`Skipping ${key} (no new data).`);
+          continue;
+        }
+
+        const detailRes = await fetch('/api/product/get', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key }) });
+        const detailData = await detailRes.json();
+        if (!detailData.ok || !detailData.data) {
+          newResults.push(`Failed to fetch details for ${key}.`);
+          continue;
+        }
+
+        const existingProduct = JSON.parse(detailData.data);
+        const updatedProduct = { ...existingProduct, ...provenanceData[key] };
+
+        const updateRes = await fetch('/api/product/update', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedProduct) });
+        const updateData = await updateRes.json();
+        
+        if (updateData.ok) {
+          newResults.push(`Successfully enriched ${key}.`);
+        } else {
+          newResults.push(`Error enriching ${key}: ${updateData.error || 'Unknown error'}`);
+        }
       }
     } catch (error) {
-      console.error('Failed to update product:', error);
-      alert('An unexpected error occurred.');
+      newResults.push(`An unexpected error occurred: ${error instanceof Error ? error.message : String(error)}`);
     }
+
+    setResults(newResults);
+    setLoading(false);
   };
 
-  if (loading) {
-    return <div className="bg-charcoal min-h-screen text-white flex items-center justify-center">Loading products...</div>;
-  }
-
   return (
-    <div className="bg-charcoal min-h-screen text-warm-limestone p-8">
-      <h1 className="text-4xl font-serif mb-8">Update Product Descriptions</h1>
-      <div className="space-y-6">
-        {products.map(product => (
-          <div key={product.id} className="bg-charcoal-light p-4 rounded-lg">
-            <h2 className="text-2xl font-serif">{product.name}</h2>
-            <p className="text-aged-stone mb-2">ID: {product.id}</p>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              const newDescription = (e.target as any).elements.description.value;
-              handleUpdate(product.id, newDescription);
-            }}>
-              <textarea
-                name="description"
-                defaultValue={product.description || ''}
-                className="w-full bg-charcoal p-2 rounded-md border border-aged-stone/20 mt-2"
-                rows={3}
-                placeholder="Enter product description..."
-              />
-              <button type="submit" className="bg-warm-limestone text-charcoal font-bold py-2 px-4 rounded-md mt-2 hover:bg-aged-stone transition-colors">
-                Update Description
-              </button>
-            </form>
-          </div>
-        ))}
-      </div>
+    <div className="bg-travertine min-h-screen text-sepia p-8">
+      <h1 className="text-4xl font-serif mb-8">Enrich Product Collection</h1>
+      <p className="mb-4">Click the button to add provenance data to the existing collection pieces.</p>
+      <button onClick={handleEnrichment} disabled={loading} className="bg-sepia text-warm-limestone font-bold py-2 px-6 rounded-md hover:bg-sepia/90 transition-colors disabled:opacity-50">
+        {loading ? 'Enriching...' : 'Enrich Collection'}
+      </button>
+      {results.length > 0 && (
+        <div className="mt-8 p-4 bg-warm-limestone/50 rounded-md">
+          <h2 className="text-2xl font-serif mb-2">Results:</h2>
+          <ul className="list-disc list-inside">
+            {results.map((result, index) => <li key={index}>{result}</li>)}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

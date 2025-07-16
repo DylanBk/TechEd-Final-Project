@@ -10,12 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         charcoal: '#1A1A1A',
-        'warm-limestone': '#F8F6F0',
-        'aged-stone': '#8B8680',
-        travertine: '#EAE6E0',
+        'charcoal-light': '#2c2c2c',
+        'warm-limestone': '#e9e4d9',
+        'aged-stone': '#a8a39a',
         sepia: '#4A403A',
-        'muted-gold': '#C0A062',
-        terracotta: '#B87333',
+        'muted-gold': '#a18f5b',
+        terracotta: '#b97a57',
+        'desk-wood': '#2d2424',
+        'aged-paper': '#f4f1ea',
+        'ink-black': '#1a1818',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],
