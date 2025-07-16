@@ -10,12 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         charcoal: '#1A1A1A',
-        'warm-copper': '#B87333',
-        'aged-stone': '#8B8680',
         'warm-limestone': '#F8F6F0',
-        'deep-blue': '#0F1419',
-        bordeaux: '#722F37',
-        'champagne-gold': '#D4AF37',
+        'aged-stone': '#8B8680',
+        travertine: '#EAE6E0',
+        sepia: '#4A403A',
+        'muted-gold': '#C0A062',
+        terracotta: '#B87333',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'sans-serif'],

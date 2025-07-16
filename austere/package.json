@@ -6,10 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
-
     "@react-three/drei": "^9.0.0",
     "@react-three/fiber": "^8.0.0",
     "framer-motion": "^12.23.5",
@@ -17,9 +17,11 @@
     "react": "^18",
     "react-countup": "^6.5.3",
     "react-dom": "^18",
-    "three": "^0.178.0"
+    "three": "^0.178.0",
+    "tsx": "^4.20.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.844.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -27,10 +29,9 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "^15.4.1",
-    "@aws-sdk/client-s3": "^3.844.0",
     "pg": "^8.16.3",
-    "zod": "^4.0.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "zod": "^4.0.5"
   }
 }

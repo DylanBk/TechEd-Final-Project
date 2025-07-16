@@ -1,44 +1,41 @@
-import Link from 'next/link';
+'use client';
 
 import getProducts from '@/lib/getProducts';
+import { useEffect, useState } from 'react';
+import { ProductItem } from '../../../types/types';
+import dynamic from 'next/dynamic';
 
-import Product from '@/components/Product';
-
-
-const Shop = async () => {
-  const productData = await getProducts();
-  console.log(productData)
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-between p-4 bg-white">
-      <h1 className="text-black text-4xl mb-8">Shop Page</h1>
-
-      {productData ? (
-        <div className="w-full flex flex-row flex-wrap justify-center md:justify-start gap-4">
-          { productData.map((p, i) => (
-            <Product
-              key={i}
-              id={p.id}
-              category={p.category}
-              name={p.name}
-              description={p.description}
-              price={p.price}
-              image={{
-                src: p.image.src,
-                alt: p.image.alt
-              }}
-            />
-          ))}
-        </div>
-      ) : (
-        <h2 className='text-3xl text-black'>No Products Available</h2>
-      )}
-
-      <Link href="/">
-        <button className="px-4 py-2 border border-black text-black rounded">Back to Home</button>
-      </Link>
+const ProductGallery = dynamic(() => import('@/components/ProductGallery'), { 
+  ssr: false,
+  loading: () => (
+    <div className="bg-charcoal text-white min-h-screen flex items-center justify-center">
+      <p className="text-aged-stone text-xl">Preparing the gallery...</p>
     </div>
-  );
+  )
+});
+
+const ShopPage = () => {
+  const [products, setProducts] = useState<ProductItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productData = await getProducts();
+      setProducts(productData);
+      setIsLoading(false);
+    };
+    fetchProducts();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="bg-charcoal text-white min-h-screen flex items-center justify-center">
+        <p className="text-aged-stone text-xl">Curating the collection...</p>
+      </div>
+    );
+  }
+
+  return <ProductGallery products={products} />;
 };
 
-export default Shop;
+export default ShopPage;
