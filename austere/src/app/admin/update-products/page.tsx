@@ -77,4 +77,5 @@ const EnrichProductsPage = () => {
   );
 };
 
-export default UpdateProductsPage;
+export default EnrichProductsPage;
+
