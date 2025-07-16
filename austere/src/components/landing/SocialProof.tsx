@@ -112,7 +112,7 @@ const SocialProof = () => {
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Image src="/An ultra-realistic depiction of a powerful Mediterranean _woman_ in her 30s gracefully standing on a luxury yacht along the Amalfi Coast, the golden hour sun glinting off the sea. She wears a flowing designer gown — elegant, modern, and w.png" alt="A woman in a designer gown on a luxury yacht at golden hour" layout="fill" objectFit="cover" className="rounded-sm" />
+            <Image src="/woman-on-yacht.png" alt="A woman in a designer gown on a luxury yacht at golden hour" layout="fill" objectFit="cover" className="rounded-sm" />
           </motion.div>
           <motion.div 
             className="absolute bottom-0 right-0 w-1/2 h-3/5 shadow-2xl"
@@ -121,7 +121,7 @@ const SocialProof = () => {
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Image src="/An ultra-realistic depiction of a powerful Mediterranean _woman_ in her 30s looking out at the ocean from her cliffside modern villa. The golden hour sun glinting off the sea. She wears a flowing designer gown — elegant, modern, and wind-.png" alt="A woman in a designer gown looking out from a modern cliffside villa" layout="fill" objectFit="cover" className="rounded-sm" />
+            <Image src="/woman-in-villa.png" alt="A woman in a designer gown looking out from a modern cliffside villa" layout="fill" objectFit="cover" className="rounded-sm" />
           </motion.div>
           <motion.div 
             className="absolute bottom-1/4 left-1/2 w-1/3 h-1/3 shadow-2xl"
