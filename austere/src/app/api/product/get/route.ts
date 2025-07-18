@@ -1,26 +1,19 @@
 import { NextResponse } from "next/server";
-import { GetObjectCommand } from "@aws-sdk/client-s3";
-
-import { s3Client as client } from "@/config/config";
-
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-
-        const input = {
-            Bucket: process.env.AWS_S3_BUCKET_NAME as string,
-            Key: body.key
-        };
-        const command = new GetObjectCommand(input);
-        const {Body} = await client.send(command);
-
-        const res = await Body?.transformToString();
+        const productsDir = join(process.cwd(), 'public', 'products');
+        const filePath = join(productsDir, body.key);
+        
+        const content = await readFile(filePath, 'utf-8');
 
         return NextResponse.json({
             ok: true,
             status: 200,
-            data: res
+            data: content
         });
     } catch (e) {
         return NextResponse.json({
@@ -28,5 +21,5 @@ export async function POST(request: Request) {
             status: 500,
             error: `Error getting product: ${e}`
         });
-    };
+    }
 };

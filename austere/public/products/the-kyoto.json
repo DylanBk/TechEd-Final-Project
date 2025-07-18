@@ -1,0 +1,61 @@
+{
+  "id": "the-kyoto.json",
+  "category": "Suits",
+  "name": "The Kyoto",
+  "description": "A masterpiece of tailoring that marries Eastern minimalism with Western structure. Hand-stitched silk lapels and traditional Japanese textile accents create an unparalleled statement of refinement.",
+  "price": "4800",
+  "image": {
+    "src": "/the-kyoto.png",
+    "alt": "The Kyoto suit, a fusion of Eastern and Western tailoring."
+  },
+  "handcraftedHours": 180,
+  "edition": "Limited Edition",
+  "materials": [
+    "Japanese Wool",
+    "Hand-Dyed Silk",
+    "Mother of Pearl Buttons"
+  ],
+  "customization": {
+    "sizes": [
+      "46R",
+      "48R",
+      "50R",
+      "52R",
+      "54R"
+    ],
+    "colors": [
+      "Midnight Black",
+      "Charcoal Grey",
+      "Navy Blue"
+    ],
+    "materials": [
+      "Super 150s Wool",
+      "Cashmere Blend",
+      "Pure Silk"
+    ],
+    "embellishments": [
+      {
+        "name": "Hand-Embroidered Initials",
+        "price": "250",
+        "description": "Custom monogram in traditional Japanese calligraphy"
+      },
+      {
+        "name": "Mother of Pearl Buttons",
+        "price": "350",
+        "description": "Upgrade to premium mother of pearl buttons"
+      }
+    ],
+    "hardwareOptions": [
+      {
+        "name": "Sterling Silver Cufflinks",
+        "price": "450",
+        "description": "Custom-designed sterling silver cufflinks"
+      },
+      {
+        "name": "Gold-Plated Hardware",
+        "price": "650",
+        "description": "18k gold-plated suit hardware and buttons"
+      }
+    ]
+  }
+}

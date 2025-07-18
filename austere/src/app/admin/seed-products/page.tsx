@@ -4,48 +4,59 @@ import { useState } from 'react';
 
 const newProducts = [
   {
-    id: 'magnum-opus.json',
-    category: 'Accessories',
-    name: 'Magnum Opus',
-    description: 'An avant-garde statement piece. A sculptural metal handbag that challenges the conventions of form and function. For the bold.',
-    price: '7500',
-    image: { src: '/magnum-opus.png', alt: 'A sculptural, avant-garde metal handbag.' },
-    handcraftedHours: 220,
-    edition: '1 of 1',
-    materials: ['Titanium Alloy', 'Polished Chrome']
-  },
-  {
     id: 'the-kyoto.json',
-    category: 'Dresses',
+    category: 'Suits',
     name: 'The Kyoto',
-    description: 'A hyper-modern interpretation of classic silhouettes, inspired by the juxtaposition of tradition and technology in Japanese design. A truly striking garment.',
-    price: '9200',
-    image: { src: '/the-kyoto.png', alt: 'A striking, hyper-modern dress with Japanese design themes.' },
+    description: 'A masterpiece of tailoring that marries Eastern minimalism with Western structure. Hand-stitched silk lapels and traditional Japanese textile accents create an unparalleled statement of refinement.',
+    price: '4800',
+    image: { src: '/the-kyoto.png', alt: 'The Kyoto suit, a fusion of Eastern and Western tailoring.' },
     handcraftedHours: 180,
-    edition: 'One of Three',
-    materials: ['Kinetic Weave', 'Carbon Silk', 'Bioluminescent Thread']
+    edition: 'Limited Edition',
+    materials: ['Japanese Wool', 'Hand-Dyed Silk', 'Mother of Pearl Buttons']
   },
   {
-    id: 'andorra.json',
-    category: 'Suits',
-    name: 'The Andorra',
-    description: 'Tailored from pristine white fabric, this suit features intricate blue embroidery reminiscent of the Andorran mountain ranges. A testament to European heritage and craftsmanship.',
-    price: '12500',
-    image: { src: '/andorra.png', alt: 'A striking white suit with blue embroidery resembling mountain ranges.' },
-    handcraftedHours: 310,
-    edition: 'Bespoke',
-    materials: ['Loro Piana Wool', 'Mountain Wildflower Silk', 'Sapphire Thread']
+    id: 'magnum-opus.json',
+    category: 'Evening Wear',
+    name: 'Magnum Opus',
+    description: 'The pinnacle of evening attire. This tuxedo features rare black vicuña wool, hand-pleated silk, and platinum-finished hardware. Each piece requires over 300 hours of meticulous craftsmanship.',
+    price: '12000',
+    image: { src: '/magnum-opus.png', alt: 'The Magnum Opus tuxedo, epitome of luxury evening wear.' },
+    handcraftedHours: 320,
+    edition: 'Bespoke Only',
+    materials: ['Vicuña Wool', 'Italian Silk', 'Platinum Hardware']
   },
   {
     id: 'berlin.json',
     category: 'Suits',
     name: 'The Berlin',
     description: 'A stunningly sharp suit in a versatile grey. The embodiment of understated power and modern European elegance. Impeccably tailored for a commanding presence.',
-    price: '8800',
-    image: { src: '/berlin.png', alt: 'A stunning, impeccably tailored grey suit.' },
-    handcraftedHours: 250,
+    price: '3800',
+    image: { src: '/berlin.png', alt: 'The Berlin suit, modern European elegance.' },
+    handcraftedHours: 160,
     edition: 'Made to Measure',
-    materials: ['Super 200s Wool', 'Brushed Steel Buttons']
+    materials: ['Super 150s Wool', 'Brushed Steel Buttons']
+  },
+  {
+    id: 'andorra.json',
+    category: 'Outerwear',
+    name: 'The Andorra',
+    description: 'A masterfully crafted overcoat that combines warmth with unparalleled sophistication. Made from the finest cashmere and lined with hand-quilted silk.',
+    price: '6500',
+    image: { src: '/andorra.png', alt: 'The Andorra overcoat, luxury winter wear.' },
+    handcraftedHours: 220,
+    edition: 'Limited Edition',
+    materials: ['Mongolian Cashmere', 'Quilted Silk Lining', 'Horn Buttons']
+  },
+  {
+    id: 'craft-blueprint.json',
+    category: 'Accessories',
+    name: 'Craft Blueprint',
+    description: 'An exquisite silk scarf featuring our signature architectural patterns. Hand-rolled edges and custom-dyed using traditional techniques.',
+    price: '1800',
+    image: { src: '/craft-blueprint.png', alt: 'The Craft Blueprint silk scarf.' },
+    handcraftedHours: 80,
+    edition: 'Seasonal Collection',
+    materials: ['Mulberry Silk', 'Natural Dyes', 'Hand-Rolled Edges']
   }
 ];
 

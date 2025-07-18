@@ -1,22 +1,23 @@
 import { NextResponse } from "next/server";
-import { ListObjectsV2Command } from "@aws-sdk/client-s3";
-
-import { s3Client as client } from "@/config/config";
-
+import { readdir, readFile } from 'fs/promises';
+import { join } from 'path';
 
 export async function GET() {
     try {
-        const input = {
-            Bucket: process.env.AWS_S3_BUCKET_NAME as string,
-        };
-        const command = new ListObjectsV2Command(input);
-        const res = await client.send(command);
+        const productsDir = join(process.cwd(), 'public', 'products');
+        const files = await readdir(productsDir);
+        const products = await Promise.all(
+            files.map(async (file) => {
+                const content = await readFile(join(productsDir, file), 'utf-8');
+                return content;
+            })
+        );
 
         return NextResponse.json({
             ok: true,
-            status: res.$metadata.httpStatusCode || 200,
+            status: 200,
             message: 'Products fetched successfully',
-            data: res.Contents
+            data: products
         });
     } catch (e) {
         return NextResponse.json({

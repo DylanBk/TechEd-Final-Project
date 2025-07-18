@@ -1,0 +1,60 @@
+{
+  "id": "berlin.json",
+  "category": "Suits",
+  "name": "The Berlin",
+  "description": "A stunningly sharp suit in a versatile grey. The embodiment of understated power and modern European elegance. Impeccably tailored for a commanding presence.",
+  "price": "3800",
+  "image": {
+    "src": "/berlin.png",
+    "alt": "The Berlin suit, modern European elegance."
+  },
+  "handcraftedHours": 160,
+  "edition": "Made to Measure",
+  "materials": [
+    "Super 150s Wool",
+    "Brushed Steel Buttons"
+  ],
+  "customization": {
+    "sizes": [
+      "46R",
+      "48R",
+      "50R",
+      "52R",
+      "54R"
+    ],
+    "colors": [
+      "Stone Grey",
+      "Navy Blue",
+      "Charcoal"
+    ],
+    "materials": [
+      "Super 150s Wool",
+      "Merino Wool",
+      "Wool-Silk Blend"
+    ],
+    "embellishments": [
+      {
+        "name": "Pick Stitching",
+        "price": "300",
+        "description": "Hand-done pick stitching on lapels and pockets"
+      },
+      {
+        "name": "Custom Lining",
+        "price": "400",
+        "description": "Personalized silk lining with custom pattern"
+      }
+    ],
+    "hardwareOptions": [
+      {
+        "name": "Brushed Steel Set",
+        "price": "350",
+        "description": "Complete set of brushed steel hardware"
+      },
+      {
+        "name": "Rose Gold Hardware",
+        "price": "550",
+        "description": "Rose gold-plated hardware set"
+      }
+    ]
+  }
+}

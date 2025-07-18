@@ -1,27 +1,21 @@
 import { NextResponse } from "next/server";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-
-import { s3Client as client } from "@/config/config";
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
 import { ProductSchema } from "@/lib/schema";
 import * as z from "zod";
-
 
 export async function PUT(request: Request) {
     try {
         const body = await request.json();
         ProductSchema.parse(body);
 
-        const input = {
-            Bucket: process.env.AWS_S3_BUCKET_NAME as string,
-            Key: body.id,
-            Body: JSON.stringify(body)
-        };
-        const command = new PutObjectCommand(input);
-        const res = await client.send(command);
+        // Store in local file system
+        const productsDir = join(process.cwd(), 'public', 'products');
+        await writeFile(join(productsDir, body.id), JSON.stringify(body, null, 2));
 
         return NextResponse.json({
             ok: true,
-            status: res.$metadata.httpStatusCode || 201,
+            status: 201,
             message: 'Product created successfully',
         });
     } catch(e) {

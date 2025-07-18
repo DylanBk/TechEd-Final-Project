@@ -1,0 +1,61 @@
+{
+  "id": "magnum-opus.json",
+  "category": "Evening Wear",
+  "name": "Magnum Opus",
+  "description": "The pinnacle of evening attire. This tuxedo features rare black vicuña wool, hand-pleated silk, and platinum-finished hardware. Each piece requires over 300 hours of meticulous craftsmanship.",
+  "price": "12000",
+  "image": {
+    "src": "/magnum-opus.png",
+    "alt": "The Magnum Opus tuxedo, epitome of luxury evening wear."
+  },
+  "handcraftedHours": 320,
+  "edition": "Bespoke Only",
+  "materials": [
+    "Vicuña Wool",
+    "Italian Silk",
+    "Platinum Hardware"
+  ],
+  "customization": {
+    "sizes": [
+      "46R",
+      "48R",
+      "50R",
+      "52R",
+      "54R"
+    ],
+    "colors": [
+      "Classic Black",
+      "Midnight Blue",
+      "Ivory White"
+    ],
+    "materials": [
+      "Vicuña Wool",
+      "Merino Wool",
+      "Cashmere Blend"
+    ],
+    "embellishments": [
+      {
+        "name": "Diamond Buttons",
+        "price": "2800",
+        "description": "Set of diamond-encrusted buttons"
+      },
+      {
+        "name": "Silk Lapel",
+        "price": "800",
+        "description": "Hand-pleated silk lapel with custom finish"
+      }
+    ],
+    "hardwareOptions": [
+      {
+        "name": "Platinum Hardware Set",
+        "price": "1500",
+        "description": "Complete set of platinum-finished hardware"
+      },
+      {
+        "name": "18k Gold Hardware",
+        "price": "2000",
+        "description": "Solid 18k gold hardware set"
+      }
+    ]
+  }
+}

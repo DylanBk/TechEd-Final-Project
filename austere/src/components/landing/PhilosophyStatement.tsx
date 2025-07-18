@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, Variants, Easing } from 'framer-motion';
 
 const PhilosophyStatement = () => {
   const containerRef = useRef(null);
@@ -10,7 +10,7 @@ const PhilosophyStatement = () => {
     offset: ['start end', 'end start'],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-22%', '18%']);
 
   const quoteLines = [
     "Each thread tells a story.",
@@ -18,15 +18,15 @@ const PhilosophyStatement = () => {
     "Each garment becomes a legacy."
   ];
 
-  const lineVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const lineVariants: Variants = {
+    hidden: { opacity: 0, y: 18 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.4,
-        duration: 0.8,
-        ease: 'easeOut'
+        delay: i * 0.38,
+        duration: 0.82,
+        ease: [0.22, 1, 0.36, 1] as Easing
       },
     }),
   };
@@ -34,7 +34,7 @@ const PhilosophyStatement = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[120vh] bg-warm-limestone flex flex-col items-center justify-center text-center overflow-hidden px-6 md:px-[180px]"
+      className="relative min-h-[118vh] bg-warm-limestone flex flex-col items-center justify-center text-center overflow-hidden px-6 md:px-[175px]"
     >
       <motion.div
         className="absolute inset-0 z-0"
@@ -45,10 +45,10 @@ const PhilosophyStatement = () => {
           y: bgY 
         }}
       />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/20" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-charcoal via-charcoal/65 to-charcoal/25" />
 
-      <div className="relative z-20">
-        <div className="max-w-[680px]">
+      <div className="relative z-20 container mx-auto">
+        <div className="max-w-[675px]">
           {quoteLines.map((line, i) => (
             <motion.h2
               key={i}
@@ -58,7 +58,7 @@ const PhilosophyStatement = () => {
               whileInView="visible"
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-serif text-warm-limestone mb-4"
-              style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.7)' }}
+              style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.72)' }}
             >
               {line}
             </motion.h2>
@@ -67,9 +67,9 @@ const PhilosophyStatement = () => {
         
         <motion.p 
           className="max-w-2xl text-aged-stone leading-relaxed mt-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8, duration: 0.8 }}
+          transition={{ delay: 1.72, duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
         >
           From the ateliers of Milano to the coastal workshops of the Mediterranean, we honor centuries of European craftsmanship. Each piece begins not as manufacture, but as dialogue between your vision and our artisans' generational wisdom.

@@ -1,0 +1,61 @@
+{
+  "id": "andorra.json",
+  "category": "Outerwear",
+  "name": "The Andorra",
+  "description": "A masterfully crafted overcoat that combines warmth with unparalleled sophistication. Made from the finest cashmere and lined with hand-quilted silk.",
+  "price": "6500",
+  "image": {
+    "src": "/andorra.png",
+    "alt": "The Andorra overcoat, luxury winter wear."
+  },
+  "handcraftedHours": 220,
+  "edition": "Limited Edition",
+  "materials": [
+    "Mongolian Cashmere",
+    "Quilted Silk Lining",
+    "Horn Buttons"
+  ],
+  "customization": {
+    "sizes": [
+      "46R",
+      "48R",
+      "50R",
+      "52R",
+      "54R"
+    ],
+    "colors": [
+      "Camel",
+      "Charcoal",
+      "Navy"
+    ],
+    "materials": [
+      "Pure Cashmere",
+      "Cashmere-Wool Blend",
+      "Baby Alpaca"
+    ],
+    "embellishments": [
+      {
+        "name": "Fur Collar",
+        "price": "1200",
+        "description": "Detachable sable fur collar"
+      },
+      {
+        "name": "Hand-Quilted Lining",
+        "price": "800",
+        "description": "Custom pattern hand-quilted silk lining"
+      }
+    ],
+    "hardwareOptions": [
+      {
+        "name": "Horn Button Set",
+        "price": "400",
+        "description": "Premium horn button set"
+      },
+      {
+        "name": "Gold-Plated Hardware",
+        "price": "600",
+        "description": "18k gold-plated hardware set"
+      }
+    ]
+  }
+}

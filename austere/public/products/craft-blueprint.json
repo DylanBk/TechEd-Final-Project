@@ -1,0 +1,44 @@
+{
+  "id": "craft-blueprint.json",
+  "category": "Accessories",
+  "name": "Craft Blueprint",
+  "description": "An exquisite silk scarf featuring our signature architectural patterns. Hand-rolled edges and custom-dyed using traditional techniques.",
+  "price": "1800",
+  "image": {
+    "src": "/craft-blueprint.png",
+    "alt": "The Craft Blueprint silk scarf."
+  },
+  "handcraftedHours": 80,
+  "edition": "Seasonal Collection",
+  "materials": [
+    "Mulberry Silk",
+    "Natural Dyes",
+    "Hand-Rolled Edges"
+  ],
+  "customization": {
+    "sizes": [
+      "Standard"
+    ],
+    "colors": [
+      "Azure Blue",
+      "Crimson",
+      "Emerald"
+    ],
+    "materials": [
+      "Mulberry Silk",
+      "Cashmere-Silk Blend"
+    ],
+    "embellishments": [
+      {
+        "name": "Hand-Knotted Fringe",
+        "price": "200",
+        "description": "Artisanal hand-knotted silk fringe"
+      },
+      {
+        "name": "Monogram",
+        "price": "150",
+        "description": "Hand-embroidered monogram"
+      }
+    ]
+  }
+}
